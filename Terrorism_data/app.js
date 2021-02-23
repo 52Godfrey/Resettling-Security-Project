@@ -61,10 +61,10 @@ d3.json("files/comparisondata.json").then((data) => {
     }
     data.forEach((x) => {
         if (x.equal){
-            counts.domestic = x.xyz;
+            counts.domestic = x.countDomvsInt;
         }
         if (! x.equal){
-            counts.international = x.xyz;
+            counts.international = x.countDomvsInt;
         }
     })
     console.log(counts);
