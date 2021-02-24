@@ -1,6 +1,12 @@
-createBubbleChart
+function init (){
 
-function createBubbleChart(error, countries, continentNames) {
+    d3.csv("countries.csv").then(function(countries_data){
+      console.log(countries_data);
+      createBubbleChart(countries_data, continentnames);
+    });
+}
+
+function createBubbleChart(countries, continentNames) {
   var populations = countries.map(function(country) { return +country.Population; });
   var meanPopulation = d3.mean(populations),
       populationExtent = d3.extent(populations),
@@ -10,7 +16,7 @@ function createBubbleChart(error, countries, continentNames) {
   var continents = d3.set(countries.map(function(country) { return country.ContinentCode; }));
   var continentColorScale = d3.scaleOrdinal(d3.schemeCategory10)
         .domain(continents.values());
-
+///Define circle size
   var width = 1200,
       height = 800;
   var svg,
@@ -19,10 +25,10 @@ function createBubbleChart(error, countries, continentNames) {
   var circleRadiusScale = d3.scaleSqrt()
     .domain(populationExtent)
     .range([circleSize.min, circleSize.max]);
-
+///Define forces
   var forces,
       forceSimulation;
-
+///Definitions
   createSVG();
   toggleContinentKey(!flagFill());
   createCircles();
@@ -31,7 +37,7 @@ function createBubbleChart(error, countries, continentNames) {
   addFlagDefinitions();
   addFillListener();
   addGroupingListeners();
-
+///Bubble Chart
   function createSVG() {
     svg = d3.select("#bubble-chart")
       .append("svg")
@@ -39,6 +45,7 @@ function createBubbleChart(error, countries, continentNames) {
         .attr("height", height);
   }
 
+///Continent Continent Key at bottom of chart
   function toggleContinentKey(showContinentKey) {
     var keyElementWidth = 150,
         keyElementHeight = 30;
@@ -55,7 +62,7 @@ function createBubbleChart(error, countries, continentNames) {
     } else {
       translateContinentKey("translate(0," + (height + offScreenYOffset) + ")");
     }
-
+///Legend that appears after continent box is checked
     function createContinentKey() {
       var keyWidth = keyElementWidth * continents.values().length;
       var continentKeyScale = d3.scaleBand()
@@ -84,7 +91,7 @@ function createBubbleChart(error, countries, continentNames) {
           .attr("x", function(d) { return continentKeyScale(d) + keyElementWidth/2; })
           .text(function(d) { return continentNames[d]; });
 
-      // The text BBox has non-zero values only after rendering
+// The text BBox has non-zero values only after rendering
       d3.selectAll("g.continent-key-element text")
           .attr("y", function(d) {
             var textHeight = this.getBBox().height;
@@ -93,7 +100,7 @@ function createBubbleChart(error, countries, continentNames) {
             return ((keyElementHeight + textHeight) / 2) - unneededTextHeight;
           });
     }
-
+///Continent check box transition speed
     function translateContinentKey(translation) {
       continentKey
         .transition()
@@ -101,15 +108,15 @@ function createBubbleChart(error, countries, continentNames) {
         .attr("transform", translation);
     }
   }
-
+///Flag Pic function
   function flagFill() {
     return isChecked("#flags");
   }
-
+///Checkbox
   function isChecked(elementID) {
     return d3.select(elementID).property("checked");
   }
-
+///Circle Generation
   function createCircles() {
     var formatPopulation = d3.format(",");
     circles = svg.selectAll("circle")
@@ -124,7 +131,7 @@ function createBubbleChart(error, countries, continentNames) {
           updateCountryInfo();
         });
     updateCircles();
-
+///Numbers from data assigned to circles
     function updateCountryInfo(country) {
       var info = "";
       if (country) {
@@ -133,14 +140,14 @@ function createBubbleChart(error, countries, continentNames) {
       d3.select("#country-info").html(info);
     }
   }
-
+///Info like Country and Continent code assigned to circles
   function updateCircles() {
     circles
       .attr("fill", function(d) {
         return flagFill() ? "url(#" + d.CountryCode + ")" : continentColorScale(d.ContinentCode);
       });
   }
-
+///Bubble movement with "weight"
   function createForces() {
     var forceStrength = 0.05;
 
@@ -157,7 +164,7 @@ function createBubbleChart(error, countries, continentNames) {
         y: d3.forceY(height / 2).strength(forceStrength)
       };
     }
-
+///Country Coordinate Movement
     function createCountryCenterForces() {
       var projectionStretchY = 0.25,
           projectionMargin = circleSize.max,
@@ -174,13 +181,13 @@ function createBubbleChart(error, countries, continentNames) {
           }).strength(forceStrength)
       };
     }
-
+///Continent Movement
     function createContinentForces() {
       return {
         x: d3.forceX(continentForceX).strength(forceStrength),
         y: d3.forceY(continentForceY).strength(forceStrength)
       };
-
+///Continent Movement along X axis
       function continentForceX(d) {
         if (d.ContinentCode === "EU") {
           return left(width);
@@ -193,7 +200,7 @@ function createBubbleChart(error, countries, continentNames) {
         }
         return center(width);
       }
-
+///Continent Movement along Y axis
       function continentForceY(d) {
         if (d.ContinentCode === "EU") {
           return top(height);
@@ -206,20 +213,20 @@ function createBubbleChart(error, countries, continentNames) {
         }
         return center(height);
       }
-
+///Final Placement
       function left(dimension) { return dimension / 4; }
       function center(dimension) { return dimension / 2; }
       function right(dimension) { return dimension / 4 * 3; }
       function top(dimension) { return dimension / 4; }
       function bottom(dimension) { return dimension / 4 * 3; }
     }
-
+///Population 
     function createPopulationForces() {
       var continentNamesDomain = continents.values().map(function(continentCode) {
         return continentNames[continentCode];
       });
       var scaledPopulationMargin = circleSize.max;
-
+///Population on Scale
       populationScaleX = d3.scaleBand()
         .domain(continentNamesDomain)
         .range([scaledPopulationMargin, width - scaledPopulationMargin*2]);
@@ -279,8 +286,8 @@ function createBubbleChart(error, countries, continentNames) {
           .append("image")
           .attr("width", 1)
           .attr("height", 1)
-          // xMidYMid: center the image in the circle
-          // slice: scale the image to fill the circle
+/// xMidYMid: center the image in the circle
+/// slice: scale the image to fill the circle
           .attr("preserveAspectRatio", "xMidYMid slice")
           .attr("xlink:href", function(d) {
             return "flags/" + d.CountryCode + ".svg";
@@ -337,6 +344,7 @@ function createBubbleChart(error, countries, continentNames) {
         translateAxis(xAxis, "translate(0," + (height + offScreenYOffset) + ")");
         translateAxis(yAxis, "translate(" + offScreenXOffset + ",0)");
       }
+      
 
       function createAxes() {
         var numberOfTicks = 10,
@@ -368,5 +376,5 @@ function createBubbleChart(error, countries, continentNames) {
       }
     }
   }
-
+ 
 }
