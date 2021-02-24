@@ -6,20 +6,31 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Resettling Security</title>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+
 </head>
 <body>
   <h1>Terrorism Data</h1>
-
+  <br>
+  <p>Defining Terrorism...</p>
+  <!-- <br> -->
+  <p>“The threatened or actual use of illegal force and violence by a non-state actor to attain a political, economic, religious, or social goal through fear, coercion, or intimidation.”</p>
+  <br>
   <div class="selectCountry">
-    <h5>Select Country</h5>
-    <select id="selDataset" onchange="optionChange(this.value)"></select>
+    <!-- <h5>Select Country</h5> -->
+    <select id="selDataset" onchange="optionChange(this.value)">
+      <option selected disabled hidden style='display: none' value=''>Select Country</option>
+    </select>
   </div>
   <div id="plot"></div>
+
+  <br>
 
   <div id="pie"></div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.9.1/d3.min.js"></script>
   <!-- <script src="data/data.json"></script> -->
   <script src="app.js"></script>
+  <!-- <script src="style.css"></script> -->
 </body>
 </html>

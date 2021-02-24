@@ -1,16 +1,12 @@
-/* remove default margin and padding from body */
-body {
-  padding: 0;
-  margin: 0;
-}
-
-/* set map, body, and html to 100% of the screen size */
-#map,
-body,
-html {
-  height: 100%;
-}
-
 h1 {
   text-align: center;
+}
+#selDataset {
+  position: relative;
+  display: inline-block;
+  /* display: block; */
+  width: 25%;
+  padding: 10px;
+  color: #525050;
+  outline: none;
 }
