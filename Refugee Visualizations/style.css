@@ -21,7 +21,7 @@ span:nth-child(2) {
 #country-info {
   color: #666;
   font-size: 28px;
-  position: absolute;
+  position: relative;
   top: 60px;
   left: 40px;
 }
