@@ -47,8 +47,6 @@ function optionChange(country_name){
                 color: 'rgb(128, 0, 128)',
                 width: 2
               }
-            // type: "line"
-            // name: "Terrorism Attacks per Year"
         };
     
         var layout = {
@@ -57,14 +55,6 @@ function optionChange(country_name){
             width: 1800,
             xaxis: {title: "Year",
                     autotick: false,
-                    // rangemode: 'tozero'
-                    // autorange: false,
-                    // ticks: 'outside',
-                    // mirror: 'ticks',
-                    // tick0: 0,
-                    // zeroline: true,
-                    // linecolor: '#969696'
-                    // showline: true
                     },
             yaxis: {title: "Number of Attacks",
                     rangemode: 'tozero',
