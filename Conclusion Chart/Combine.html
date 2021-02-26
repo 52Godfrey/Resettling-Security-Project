@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Resettling Security</title>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+<body>
+  <h1>Is There a Connection Between Hosting Refugees and an Increase in Terror Attacks?</h1>
+  <br>
+ 
+  <!-- <br> -->
+  <p>In the chart below, we set to compare the two data sets that we have. </p>
+  <p> One Line, "Terror Attacks" listing the 
+    amount of terrorist attacks in the country that year. The other Line, "Refugees Hosted" lists the total amount of 
+    refugees that the country granted asylum. (Please note that the data in "Terror Attacks were multiplied by 100 to be visualized")
+  </p>
+  <br>
+  <div class="selectCountry">
+    <!-- <h5>Select Country</h5> -->
+    <select id="selDataset" onchange="optionChange(this.value)">
+      <option selected disabled hidden style='display: none' value=''>Select Country</option>
+    </select>
+  </div>
+  <div id="plot"></div>
+
+  <br>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.9.1/d3.min.js"></script>
+  <!-- <script src="data/data.json"></script> -->
+  <script src="Combine.js"></script>
+  <!-- <script src="style.css"></script> -->
+</body>
+</html>
