@@ -292,6 +292,7 @@ function createBubbleChart(countries, continentNames) {
 /// Slice: scale the image to fill the circle
       .attr("preserveAspectRatio", "xMidYMid slice")
       .attr("xlink:href", function (d) {
+        // 
         return "../static/flags/" + d.CountryCode + ".svg";
       });
   }
