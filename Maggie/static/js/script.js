@@ -1,6 +1,6 @@
 function init() {
 
-  d3.csv("../assets/data/countries.csv").then(function (countries_data) {
+  d3.csv("../static/data/countries.csv").then(function (countries_data) {
     console.log(countries_data);
     createBubbleChart(countries_data, continentnames);
   });
@@ -292,7 +292,7 @@ function createBubbleChart(countries, continentNames) {
 /// Slice: scale the image to fill the circle
       .attr("preserveAspectRatio", "xMidYMid slice")
       .attr("xlink:href", function (d) {
-        return "../assets/flags/" + d.CountryCode + ".svg";
+        return "../static/flags/" + d.CountryCode + ".svg";
       });
   }
 
