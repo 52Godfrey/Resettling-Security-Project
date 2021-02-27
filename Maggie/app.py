@@ -8,8 +8,11 @@ from sqlalchemy import create_engine
 app = Flask(__name__)
 
 @app.route("/")
-@app.route("/index.html")
 def home():
+    return render_template("index2.html")
+
+@app.route("/index.html")
+def inex():
     return render_template("index.html")
 
 @app.route("/Refugee.html")
