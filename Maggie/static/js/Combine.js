@@ -1,5 +1,5 @@
 // Read json file
-d3.json("../assets/js/CountryList.json").then((countryList) => {
+d3.json("../static/js/CountryList.json").then((countryList) => {
     // console.log(countryList);
     var countryName = countryList.map(d => d.country_names);
     // console.log(countryName);
@@ -23,7 +23,7 @@ d3.select('#selDataset')
 });
 
 function optionChange(country_name){
-    d3.json("../assets/js/CombineDF.json").then((data) => {
+    d3.json("../static/js/CombineDF.json").then((data) => {
         data = data.filter(d => d.Country===country_name);
         // console.log(data);
 
