@@ -6,15 +6,15 @@
   <title>Resettling Security</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="static/css/style4.css">
+  <link rel="stylesheet" href="../static/css/style4.css">
   <script src="https://cdn.jsdelivr.net/npm/animejs@3.0.1/lib/anime.min.js"></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
 </head>
 
-<body>
+<body style= "background-color: #c2d3f1;">
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="index.html">Resettling Security</a>
+    <a class="navbar-brand" href="index2.html" target="_blank">Resettling Security</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -23,16 +23,17 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="index.html" target="_blank">Home <span class="sr-only">(current)</span></a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="Refugee.html" target="_blank">Registered Refugees</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="Visual_01.html"target="_blank">Connections</a>
+          <a class="nav-link" href="Visual_02.html" target="_blank">Terrorism Data</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="Visual_02.html"target="_blank">Terrorism Data</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="Refugee.html"target="_blank">Refugees Registered Since 1990 - Origin Country</a>
+          <a class="nav-link" href="Visual_01.html" target="_blank">Connections</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -40,15 +41,17 @@
             About Us
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Why we are we doing this?</a>
+            <a class="dropdown-item" href="Our_why.html" target="_blank">Why we are we doing this?</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="https://www.linkedin.com/in/miguel-eamiguel-36b0ab106/">Miguel</a>
-            <a class="dropdown-item" href="https://www.linkedin.com/feed/?trk=homepage-basic_google-one-tap-submit">Jessica</a>
-            <a class="dropdown-item" href="#">Madhav</a>
-            <a class="dropdown-item" href="#">Maggie</a>
+            <a class="dropdown-item" href="https://www.linkedin.com/in/miguel-eamiguel-36b0ab106/"
+              target="_blank">Miguel</a>
+            <a class="dropdown-item" href="https://www.linkedin.com/feed/?trk=homepage-basic_google-one-tap-submit"
+              target="_blank">Jessica</a>
+            <a class="dropdown-item" href="#" target="_blank">Madhav</a>
+            <a class="dropdown-item" href="#" target="_blank">Maggie</a>
           </div>
         </li>
-        
+
       </ul>
       <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -57,33 +60,34 @@
     </div>
   </nav>
 
-    <h1>Is There a Connection Between Hosting Refugees and an Increase in Terror Attacks?</h1>
-    <br>
- 
-    <!-- <br> -->
-    <p>In the chart below, we set to compare the two data sets that we have. </p>
-    <p> One Line, "Terror Attacks" listing the amount of terrorist attacks in the country that year. The other Line, "Refugees Hosted" lists the total amount of 
-      refugees that the country granted asylum. (Please note that the data in "Terror Attacks were multiplied by 100 to be visualized")
-    </p>
-    <br>
-    <div class="selectCountry">
-      <!-- <h5>Select Country</h5> -->
-      <select id="selDataset" onchange="optionChange(this.value)">
-        <option selected disabled hidden style='display: none' value=''>Select Country</option>
-      </select>
-    </div>
-    <div id="plot"></div>
+  <h1>Is There a Connection Between Hosting Refugees and an Increase in Terror Attacks?</h1>
+  <br>
 
-    <br>
+  <!-- <br> -->
+  <p>In the chart below, we set to compare the two data sets that we have. </p>
+  <p> One Line, "Terror Attacks" listing the amount of terrorist attacks in the country that year. </p>
+  <p>The other Line,"Refugees Hosted" lists the total amount of refugees that the country granted asylum. 
+  <p>(Please note that the data in "Terror Attacks were multiplied by 100 to be
+    visualized")</p>
+  <br>
+  <div class="selectCountry">
+    <!-- <h5>Select Country</h5> -->
+    <select id="selDataset" onchange="optionChange(this.value)">
+      <option selected disabled hidden style='display: none' value=''>Select Country</option>
+    </select>
+  </div>
+  <div id="plot"></div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.9.1/d3.min.js"></script>
-    <!-- <script src="data/data.json"></script> -->
-    <script src="../static/js/Combine.js"></script>
-    <!-- <script src="style.css"></script> -->
+  <br>
 
-  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.9.1/d3.min.js"></script>
+  <!-- <script src="data/data.json"></script> -->
+  <script src="../static/js/Combine.js"></script>
+  <!-- <script src="style.css"></script> -->
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"

@@ -1,18 +1,27 @@
+/* html, body {
+  background: linear-gradient(to bottom, #ffffff 4%, #6495ed 99%);
+} */
+
 h1 {
-  font-size: 20px;
+  font-size: 40px;
   text-align: center;
+  margin: 20px 20px 5px 20px;
+  padding: 10px 10px 5px 10px;
 }
 #selDataset {
   position: relative;
   display: inline-block;
   /* display: block; */
-  width: 25%;
+  width: 35%;
+  margin: 15px;
   padding: 10px;
   color: #525050;
   outline: none;
 }
 
 p {font-family: "Times New Roman", Times, serif;
-  font-size: 20px;
+  font-size: 15px;
   text-align: center;
+  margin: 1px;
+  padding: 2px;
 }
