@@ -27,7 +27,7 @@ def terror0():
 def terror2():
     return render_template("Visual_01.html")
 
-@app.route("/Our_Why.html")
+@app.route("/Our_why.html")
 def terror3():
     return render_template("Our_Why.html")
 
